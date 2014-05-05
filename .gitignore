@@ -1,0 +1,7 @@
+node_modules
+public/node_modules
+public/.tmp
+public/.sass-cache
+public/app/bower_components
+public/dist
+public/*.sublime*
