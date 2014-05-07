@@ -11,31 +11,31 @@ angular.module('zhihuAngularApp', [
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/index.html',
+        templateUrl: '/app/views/index.html',
         controller: 'IndexCtrl'
       })
       .when('/article/:id', {
-        templateUrl: 'views/article.html',
+        templateUrl: '/app/views/article.html',
         controller: 'ArticleCtrl'
       })
       .when('/setting', {
-        templateUrl: 'views/setting.html',
+        templateUrl: '/app/views/setting.html',
         controller: 'SettingCtrl'
       })
       .when('/comment/:id', {
-        templateUrl: 'views/comment.html',
+        templateUrl: '/app/views/comment.html',
         controller: 'CommentCtrl'
       })
       .when('/room', {
-        templateUrl: 'views/room.html',
+        templateUrl: '/app/views/room.html',
         controller: 'RoomCtrl'
       })
       .when('/chat/:id', {
-        templateUrl: 'views/chat.html',
+        templateUrl: '/app/views/chat.html',
         controller: 'ChatCtrl'
       })
       .when('/user', {
-        templateUrl: 'views/user.html',
+        templateUrl: '/app/views/user.html',
         controller: 'UserCtrl'
       })
       .otherwise({
