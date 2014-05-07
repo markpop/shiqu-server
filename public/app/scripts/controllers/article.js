@@ -15,7 +15,7 @@ angular.module('zhihuAngularApp')
     $scope.comment = function () {
         $location.path('comment/'+id);
     }; 
-    Api.get('scripts/data/article.json').then(function (data) {
+    Api.get('/api/article/'+id).then(function (data) {
         $scope.data = data;
     });
   }]);
