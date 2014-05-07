@@ -5,7 +5,13 @@ angular.module('zhihuAngularApp')
     $scope.$on('ngRepeatFinished', function() {
 		Tool.slider();
 	});
-    Api.get('scripts/data/index.json').then(function (data) {
+    Api.get('/api/index').then(function (data) {
+      var len = data.length;
+      if (len > 0) {
+        data.sliders = data;
+      } else {
+        data.sliders = [];
+      }
     	$scope.data = data;
     });
     $scope.goArticle = function (id) {

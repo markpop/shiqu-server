@@ -2,7 +2,7 @@
 
 angular.module('zhihuAngularApp')
   .service('Socket', ['$rootScope', function ($rootScope) {
-	  var socket = io.connect('162.243.250.86:3000');
+	  var socket = io.connect('172.31.183.183:3000');
 	  return {
 	    on: function (eventName, callback) {
 	      socket.on(eventName, function () {  

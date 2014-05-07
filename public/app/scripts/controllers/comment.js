@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('zhihuAngularApp')
-  .controller('CommentCtrl', ['$scope', '$location', '$routeParams', 'Tool', 'Api', function ($scope, $location, $routeParams, Tool, Api) {
-    var id = $routeParams.id;
+  .controller('CommentCtrl', ['$scope', '$location', '$routeParams', '$window', 'Tool', 'Api', function ($scope, $location, $routeParams, $window, Tool, Api) {
+    var id = $routeParams.id,
+    user = $window.user;
     $scope.back = function () {
     	$location.path('article/'+id);
     };
@@ -13,23 +14,20 @@ angular.module('zhihuAngularApp')
     	$('.comment-publish').removeClass('open');
     };
     $scope.publish = function () {
-        Api.get('scripts/data/ok.json').then(function (data) {
-            var comment = {
-                id: data.id,
-                time: data.time,
-                content: $scope.content,
-                good: 0,
-                user: {
-                    img: "images/slider.jpg",
-                    desc: "猴子不郁闷"
-                }
-            };
+        var comment = {
+            article_id: id,
+            time: Date.parse(new Date()),
+            content: $scope.content,
+            good: 0,
+            user: user
+        };
+        Api.post('/api/comment', comment).then(function () {
             $scope.data.push(comment);
             $scope.content = '';
             $scope.cancel();
         });
     };
-    Api.get('scripts/data/comment.json').then(function (data) {
+    Api.get('/api/comment/'+id).then(function (data) {
     	$scope.data = data;
     });
   }]);

@@ -12,12 +12,12 @@
 				<div class="comment-item-info row">
 					<div class="comment-item-user col-6 row">
 						<div class="col-2">
-							<img ng-src="{{comment.user.img}}" alt="" width="18px" height="18px">
+							<img ng-src="{{comment.user.headimgurl}}" alt="" width="18px" height="18px">
 						</div>
-						<div class="col-10">{{comment.user.desc}}</div>
+						<div class="col-10">{{comment.user.nickname}}</div>
 					</div>
 					<div class="comment-item-time col-6">
-						{{comment.time}}
+						{{comment.time | date: 'MM-dd HH:mm'}}
 					</div>
 				</div>
 				<div class="commit-item-content">
@@ -36,7 +36,7 @@
 				</div>
 				<div class="comment-publish-btn">
 					<button type="submit" ng-disabled="publishForm.$invalid">发布</button>
-					<button ng-click="cancel()">取消</button>
+					<button type="reset" ng-click="cancel()">取消</button>
 				</div>
 			</form>
 		</div>

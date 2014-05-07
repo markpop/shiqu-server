@@ -22,7 +22,7 @@
 		<div class="nav-bullets"></div>
 	</div>
 	<div class="list">
-		<div class="list-item row" ng-repeat="article in data.articles" ng-click="goArticle(article.id)">
+		<div class="list-item row" ng-repeat="article in data.articles" ng-click="goArticle(article._id)">
 			<div class="list-item-content col-9">
 				{{article.title}}
 			</div>

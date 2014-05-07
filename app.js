@@ -11,10 +11,14 @@ var url = require('url');
 var querystring = require('querystring');
 var path = require('path');
 var wechat = require('wechat');
-var socket = require('socket.io');
+var mongoose = require('mongoose');
 var config = require('./config');
+var models = require('./models');
 
 var app = express();
+var api = new wechat.API(config.wechat.appID, config.wechat.appsecret);
+
+mongoose.connect('mongodb://localhost/wechat-2014');
 
 // all environments
 app.engine('.html', require('ejs').__express);
@@ -39,18 +43,67 @@ if ('development' == app.get('env')) {
 app.get('/', function (req, res) {
 	var params = url.parse(req.url).query;
 	var openid = querystring.parse(params).openid;
-	var api = new wechat.API(config.wechat.appID, config.wechat.appsecret);
 	api.getUser(openid, function (err, data) {
 		res.render('index', {user: data});
 	});
 });
+app.get('/api/index', function (req, res) {
+	Article.find().select('_id title img').exec(function (err, articles) {
+		if (err)
+			res.json({code: 500, msg: err});
+		else
+			res.json({code: 200, data: articles});
+	});
+});
+app.get('/api/article/:id', function (req, res) {
+	var Article = models.Article;
+	Article.findOne({_id: req.params.id, done: 1},function (err, article) {
+		if (err)
+			res.json({code: 500, msg: err});
+		else
+			res.json({code: 200, data: article});
+  });
+});
+app.get('/api/comment/:id', function (req, res) {
+	var Comment = models.Comment;
+	Comment.find({article_id: req.params.id}, function (err, comments) {
+		if (err)
+			res.json({code: 500, msg: err});
+		else
+			res.json({code: 200, data: comments});
+	});
+});
+app.post('/api/comment', function (req, res) {
+	var Comment = models.Comment;
+	Comment.create(req.body, function (err, Comment) {
+		if (err)
+			res.json({code: 500, msg: err});
+		else
+			res.json({code: 201, msg: 'create comment success'});
+	});
 
+	// var postData = "";
+
+ //  req.setEncoding("utf8");
+
+ //  req.addListener("data", function(postDataChunk) {
+ //    postData += postDataChunk;
+ //    console.log("Received POST data chunk '"+
+ //    postDataChunk + "'.");
+ //  });
+
+ //  req.addListener("end", function() {
+ //    console.log(postData);
+ //  });
+
+
+});
 
 var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-var io = socket.listen(server);
+var io = require('socket.io').listen(server);
 io.sockets.on('connection', function (socket) {
 	socket.on('message_to_server', function (data) {
 		io.sockets.emit('message_to_client', data);
