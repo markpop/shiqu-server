@@ -6,13 +6,9 @@ angular.module('zhihuAngularApp')
 		Tool.slider();
 	});
     Api.get('/api/index').then(function (data) {
-      var len = data.length;
-      if (len > 0) {
-        data.sliders = data;
-      } else {
-        data.sliders = [];
-      }
-    	$scope.data = data;
+      $scope.data = {};
+      $scope.data.articles = data;
+      $scope.data.sliders = [];
     });
     $scope.goArticle = function (id) {
     	$location.path('article/'+id);
