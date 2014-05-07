@@ -48,6 +48,7 @@ app.get('/', function (req, res) {
 	});
 });
 app.get('/api/index', function (req, res) {
+	var Article = models.Article;
 	Article.find().select('_id title img').exec(function (err, articles) {
 		if (err)
 			res.json({code: 500, msg: err});
