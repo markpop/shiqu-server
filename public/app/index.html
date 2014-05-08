@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="/app/styles/main.css">
     <!-- endbuild -->
     <script>
-      var user={};user.subscribe=<%=user.subscribe%>;user.openid='<%=user.openid%>';user.nickname='<%=user.nickname%>';user.sex=<%=user.sex%>;user.language='<%=user.language%>';user.city='<%=user.city%>';user.province='<%=user.province%>';user.country='<%=user.country%>';user.headimgurl='<%=user.headimgurl%>';user.subscribe_time=<%=user.subscribe_time%>;
+      var user={};user.subscribe=<%=user.subscribe%>;user.openid='<%=user.openid%>';user.nickname='<%=user.nickname%>';user.sex=<%=user.sex%>;user.language='<%=user.language%>';user.city='<%=user.city%>';user.province='<%=user.province%>';user.country='<%=user.country%>';user.headimgurl='<%=user.headimgurl%>';user.subscribe_time=<%=user.subscribe_time%>;var arr = user.headimgurl.split('/');arr.pop();arr.push('46');user.headimgurl = arr.join('/');
     </script>
   </head>
   <body ng-app="zhihuAngularApp" ng-controller="GlobalCtrl">
