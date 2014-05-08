@@ -41,7 +41,7 @@
           <div class="menu-item" ng-class="{active: controller === 'UserCtrl'}" ng-click="menuUser($event.target)">
             <span class="icon-users pr10"></span>用户
           </div>
-          <div class="menu-item">
+          <div class="menu-item" ng-class="{active: controller === 'CollectionCtrl'}" ng-click="menuCollection($event.target)">
             <span class="icon-drawer3 pr10"></span>收藏
           </div>
           <div class="menu-item" ng-class="{active: controller === 'SettingCtrl'}" ng-click="menuSetting($event.target)">
@@ -120,6 +120,7 @@
         <script src="/app/scripts/controllers/room.js"></script>
         <script src="/app/scripts/controllers/chat.js"></script>
         <script src="/app/scripts/controllers/user.js"></script>
+        <script src="/app/scripts/controllers/collection.js"></script>
         <script src="/app/scripts/services/tool.js"></script>
         <script src="/app/scripts/services/api.js"></script>
         <script src="/app/scripts/services/socket.js"></script>

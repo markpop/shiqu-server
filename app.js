@@ -82,22 +82,24 @@ app.post('/api/comment', function (req, res) {
 		else
 			res.json({code: 201, msg: 'create comment success'});
 	});
-
-	// var postData = "";
-
- //  req.setEncoding("utf8");
-
- //  req.addListener("data", function(postDataChunk) {
- //    postData += postDataChunk;
- //    console.log("Received POST data chunk '"+
- //    postDataChunk + "'.");
- //  });
-
- //  req.addListener("end", function() {
- //    console.log(postData);
- //  });
-
-
+});
+app.post('/api/collection', function (req, res) {
+	var Collection = models.Collection;
+	Collection.create(req.body, function (err, Collection) {
+		if (err)
+			res.json({code: 500, msg: err});
+		else
+			res.json({code: 201, msg: 'create collection success'});
+	});
+});
+app.get('/api/collection/:id', function (req, res) {
+	var Collection = models.Collection;
+	Collection.find({openid: req.params.id}, function (err, collections) {
+		if (err)
+			res.json({code: 500, msg: err});
+		else
+			res.json({code: 200, data: collections});
+	});
 });
 
 var server = http.createServer(app).listen(app.get('port'), function(){

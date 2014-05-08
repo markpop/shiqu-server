@@ -1,0 +1,26 @@
+<div class="cover none" ng-click="menuClose()"></div>
+<header>
+	<div class="topnav row">
+		<div class="col-2" ng-click="menuOpen()">
+			<span class="icon-list5"></span>
+		</div>
+		<div class="col-8">
+			收藏
+		</div>
+		<div class="col-2">
+			
+		</div>
+	</div>
+</header>
+<div class="main">
+	<div class="list">
+		<div class="list-item row" ng-repeat="article in data" ng-click="goArticle(article._id)">
+			<div class="list-item-content col-9">
+				{{article.title}}
+			</div>
+			<div class="list-item-img col-3">
+				<img ng-src="{{article.img}}" alt="" width="100%">
+			</div>
+		</div>
+	</div>
+</div>

@@ -38,6 +38,10 @@ angular.module('zhihuAngularApp', [
         templateUrl: '/app/views/user.html',
         controller: 'UserCtrl'
       })
+      .when('/collection', {
+        templateUrl: '/app/views/collection.html',
+        controller: 'CollectionCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -10,15 +10,15 @@
 	<div class="article">
 		<div class="article-author row">
 			<div class="article-author-img col-1">
-				<img ng-src="{{data.user.img}}" alt="" width="18px" height="18px">
+				<img ng-src="{{data.user.headimgurl}}" alt="" width="18px" height="18px">
 			</div>
 			<div class="article-author-desc col-11">
-				<span class="ml5">{{data.user.desc}}</span>
+				<span class="ml5">{{data.user.nickname}}</span>
 			</div>
 		</div>
 		<div class="article-content" ng-bind-html="data.content"></div>
 		<div class="article-link">
-			<button>查看知乎讨论</button>
+			<button>查看更多</button>
 		</div>
 	</div>
 	<div class="article-share">
@@ -82,7 +82,7 @@
 			</div>
 		</div>
 		<div class="article-share-btn">
-			<button>收藏</button>
+			<button ng-click="collect(data)">收藏</button>
 			<button class="article-share-cancel" ng-click="cancel()">取消</button>
 		</div>
 	</div>

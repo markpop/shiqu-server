@@ -36,6 +36,13 @@ var Comment = mongoose.model('Comment', {
 		subscribe_time: Number
 	}
 });
+var Collection = mongoose.model('Collection', {
+	openid: String,
+  _id: String,
+  img: String,
+  title: String,
+});
 
 exports.Article = Article;
 exports.Comment = Comment;
+exports.Collection = Collection;

@@ -57,4 +57,10 @@ angular.module('zhihuAngularApp')
         $scope.menuClose();
         $location.path('user');
     };
+    $scope.menuCollection = function (target) {
+        $('.menu-item').removeClass('active');
+        $(target).addClass('active');
+        $scope.menuClose();
+        $location.path('collection');
+    };
   }]);
