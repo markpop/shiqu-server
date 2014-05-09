@@ -1,5 +1,5 @@
 exports.wechat = {
-	token: "dongjianhua",
-	appID: "wx04e5801794b03d9b",
-	appsecret: "23abfbdaf2fb1ff7234f4f5f99ca6499"
+	token: "szu_token",
+	appID: "wx380c0d5a96fccbf5",
+	appsecret: "d12942b505f8fcc98e77918ddd0ab0f8"
 };
