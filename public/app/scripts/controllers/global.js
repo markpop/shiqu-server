@@ -4,14 +4,17 @@ angular.module('zhihuAngularApp')
   .controller('GlobalCtrl', ['$scope', '$location', '$route', function ($scope, $location, $route) {
     $scope.night = function () {
     	var container = $('.container'),
-        dn = $('.menu-dn');
+        dn = $('.menu-dn'),
+        body = $('body');
         if (container.hasClass('night')) {
             container.removeClass('night');
+            body.removeClass('night');
             dn.removeClass('icon-moon2');
             dn.removeClass('icon-sun2');
             dn.addClass('icon-moon2');
         } else {
             container.addClass('night');
+            body.addClass('night');
             dn.removeClass('icon-moon2');
             dn.removeClass('icon-sun2');
             dn.addClass('icon-sun2');
