@@ -42,7 +42,20 @@ var Collection = mongoose.model('Collection', {
   img: String,
   title: String,
 });
+var User = mongoose.model('User', {
+	subscribe: Number, 
+	openid: String, 
+	nickname: String, 
+	sex: Number, 
+	language: String, 
+	city: String, 
+	province: String, 
+	country: String, 
+	headimgurl: String, 
+	subscribe_time: Number
+});
 
 exports.Article = Article;
 exports.Comment = Comment;
 exports.Collection = Collection;
+exports.User =User;

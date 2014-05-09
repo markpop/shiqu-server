@@ -16,7 +16,7 @@ var config = require('./config');
 var models = require('./models');
 
 var app = express();
-var api = new wechat.API(config.wechat.appID, config.wechat.appsecret);
+// var api = new wechat.API(config.wechat.appID, config.wechat.appsecret);
 
 mongoose.connect('mongodb://localhost/wechat-2014');
 
@@ -43,8 +43,12 @@ if ('development' == app.get('env')) {
 app.get('/', function (req, res) {
 	var params = url.parse(req.url).query;
 	var openid = querystring.parse(params).openid;
-	api.getUser(openid, function (err, data) {
-		res.render('index', {user: data});
+	// api.getUser(openid, function (err, data) {
+	// 	res.render('index', {user: data});
+	// });
+	var User = models.User;
+	User.findOne({openid: openid}, function (err, user) {
+		res.render('index', {user: user});
 	});
 });
 app.get('/api/index', function (req, res) {
