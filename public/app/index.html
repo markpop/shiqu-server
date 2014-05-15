@@ -12,12 +12,12 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css /dist/styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="/app/styles/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="styles/fonts/icomoon/style.css">
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) /dist/styles/main.css -->
-    <link rel="stylesheet" href="/app/styles/base.css">
-    <link rel="stylesheet" href="/app/styles/main.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
     <script>
       var user={};user.subscribe=<%=user.subscribe%>;user.openid='<%=user.openid%>';user.nickname='<%=user.nickname%>';user.sex=<%=user.sex%>;user.language='<%=user.language%>';user.city='<%=user.city%>';user.province='<%=user.province%>';user.country='<%=user.country%>';user.headimgurl='<%=user.headimgurl%>';user.subscribe_time=<%=user.subscribe_time%>;var arr = user.headimgurl.split('/');arr.pop();arr.push('46');user.headimgurl = arr.join('/');
@@ -100,35 +100,35 @@
 
     <!-- build:js /dist/scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="/app/bower_components/angular/angular.js"></script>
-    <script src="/app/bower_components/angular-resource/angular-resource.js"></script>
-    <script src="/app/bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="/app/bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="/app/bower_components/angular-route/angular-route.js"></script>
-    <script src="/app/bower_components/angular-touch/angular-touch.js"></script>
-    <script src="/app/bower_components/zepto-full/zepto.min.js"></script>
-    <script src="/app/bower_components/swipe/swipe.js"></script>
-    <script src="/app/bower_components/angular-socket-io/socket.js"></script>
-    <script src="/app/bower_components/angularjs-geolocation/src/geolocation.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/zepto-full/zepto.min.js"></script>
+    <script src="bower_components/swipe/swipe.js"></script>
+    <script src="bower_components/angular-socket-io/socket.js"></script>
+    <script src="bower_components/angularjs-geolocation/src/geolocation.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) /dist/scripts/scripts.js -->
-        <script src="/app/scripts/app.js"></script>
-        <script src="/app/scripts/controllers/global.js"></script>
-        <script src="/app/scripts/controllers/index.js"></script>
-        <script src="/app/scripts/controllers/article.js"></script>
-        <script src="/app/scripts/controllers/setting.js"></script>
-        <script src="/app/scripts/controllers/comment.js"></script>
-        <script src="/app/scripts/controllers/room.js"></script>
-        <script src="/app/scripts/controllers/chat.js"></script>
-        <script src="/app/scripts/controllers/user.js"></script>
-        <script src="/app/scripts/controllers/collection.js"></script>
-        <script src="/app/scripts/services/tool.js"></script>
-        <script src="/app/scripts/services/api.js"></script>
-        <script src="/app/scripts/services/socket.js"></script>
-        <script src="/app/scripts/directives/onFinishRender.js"></script>
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/global.js"></script>
+        <script src="scripts/controllers/index.js"></script>
+        <script src="scripts/controllers/article.js"></script>
+        <script src="scripts/controllers/setting.js"></script>
+        <script src="scripts/controllers/comment.js"></script>
+        <script src="scripts/controllers/room.js"></script>
+        <script src="scripts/controllers/chat.js"></script>
+        <script src="scripts/controllers/user.js"></script>
+        <script src="scripts/controllers/collection.js"></script>
+        <script src="scripts/services/tool.js"></script>
+        <script src="scripts/services/api.js"></script>
+        <script src="scripts/services/socket.js"></script>
+        <script src="scripts/directives/onFinishRender.js"></script>
         <!-- endbuild -->
 </body>
 </html>

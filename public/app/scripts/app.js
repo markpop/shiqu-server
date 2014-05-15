@@ -12,35 +12,35 @@ angular.module('zhihuAngularApp', [
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: '/app/views/index.html',
+        templateUrl: '/dist/views/index.html',
         controller: 'IndexCtrl'
       })
       .when('/article/:id', {
-        templateUrl: '/app/views/article.html',
+        templateUrl: '/dist/views/article.html',
         controller: 'ArticleCtrl'
       })
       .when('/setting', {
-        templateUrl: '/app/views/setting.html',
+        templateUrl: '/dist/views/setting.html',
         controller: 'SettingCtrl'
       })
       .when('/comment/:id', {
-        templateUrl: '/app/views/comment.html',
+        templateUrl: '/dist/views/comment.html',
         controller: 'CommentCtrl'
       })
       .when('/room', {
-        templateUrl: '/app/views/room.html',
+        templateUrl: '/dist/views/room.html',
         controller: 'RoomCtrl'
       })
       .when('/chat/:id', {
-        templateUrl: '/app/views/chat.html',
+        templateUrl: '/dist/views/chat.html',
         controller: 'ChatCtrl'
       })
       .when('/user', {
-        templateUrl: '/app/views/user.html',
+        templateUrl: '/dist/views/user.html',
         controller: 'UserCtrl'
       })
       .when('/collection', {
-        templateUrl: '/app/views/collection.html',
+        templateUrl: '/dist/views/collection.html',
         controller: 'CollectionCtrl'
       })
       .otherwise({
