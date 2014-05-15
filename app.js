@@ -24,7 +24,7 @@ mongoose.connect('mongodb://localhost/wechat-2014');
 // all environments
 app.engine('.html', require('ejs').__express);
 app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'public/app'));
+app.set('views', path.join(__dirname, 'public/dist'));
 app.set('view engine', 'html');
 app.use(express.favicon());
 app.use(express.logger('dev'));
