@@ -14,7 +14,13 @@
 </header>
 <div class="main">
 	<div class="list">
-		<div class="list-item row" ng-repeat="article in data" ng-click="goArticle(article._id)">
+		<div class="list-search">
+			<div class="list-search-input">
+				<span class="icon-search"></span>
+				<input type="text" placeholder="搜索标题" ng-model="search">
+			</div>
+		</div>
+		<div class="list-item row" ng-repeat="article in data | filter:{title: search}" ng-click="goArticle(article._id)">
 			<div class="list-item-content col-9">
 				{{article.title}}
 			</div>

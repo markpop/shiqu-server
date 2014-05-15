@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('zhihuAngularApp')
-  .controller('IndexCtrl', ['$scope', '$location', 'Tool', 'Api', function ($scope, $location, Tool, Api) {
+  .controller('IndexCtrl', ['$scope', '$location', 'Tool', 'Api', 'geolocation', function ($scope, $location, Tool, Api, geolocation) {
     $scope.$on('ngRepeatFinished', function() {
 		Tool.slider();
 	});
@@ -24,6 +24,13 @@ angular.module('zhihuAngularApp')
         $scope.data.sliders = [];
       }
       $scope.data.articles = data;
+    });
+    geolocation.getLocation().then(function(data){
+      console.log(data.coords.latitude+'/'+data.coords.longitude);
+      Api.get('/api/weather/'+data.coords.latitude+'/'+data.coords.longitude).then(function (weather) {
+        $scope.weather = weather;
+        console.log(weather);
+      });
     });
     $scope.goArticle = function (id) {
     	$location.path('article/'+id);

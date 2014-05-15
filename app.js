@@ -10,10 +10,11 @@ var http = require('http');
 var url = require('url');
 var querystring = require('querystring');
 var path = require('path');
-var wechat = require('wechat');
+// var wechat = require('wechat');
 var mongoose = require('mongoose');
 var config = require('./config');
 var models = require('./models');
+var request = require('request');
 
 var app = express();
 // var api = new wechat.API(config.wechat.appID, config.wechat.appsecret);
@@ -31,7 +32,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public/')));
+app.use(express.static(path.join(__dirname, 'public/app')));
 
 // development only
 if ('development' == app.get('env')) {
@@ -62,20 +63,29 @@ app.get('/api/index', function (req, res) {
 });
 app.get('/api/article/:id', function (req, res) {
 	var Article = models.Article;
-	Article.findOne({_id: req.params.id, done: 1},function (err, article) {
+	Article.findOne({_id: req.params.id, done: "1"},function (err, article) {
 		if (err)
 			res.json({code: 500, msg: err});
 		else
 			res.json({code: 200, data: article});
   });
 });
-app.get('/api/comment/:id', function (req, res) {
+app.get('/api/comment/:article_id', function (req, res) {
 	var Comment = models.Comment;
-	Comment.find({article_id: req.params.id}, function (err, comments) {
+	Comment.find({article_id: req.params.article_id}, function (err, comments) {
 		if (err)
 			res.json({code: 500, msg: err});
 		else
 			res.json({code: 200, data: comments});
+	});
+});
+app.get('/api/comment_num/:article_id', function (req, res) {
+	var Comment = models.Comment;
+	Comment.count({article_id: req.params.article_id}, function (err, num) {
+		if (err)
+			res.json({code: 500, msg: err});
+		else
+			res.json({code: 200, data: num});
 	});
 });
 app.post('/api/comment', function (req, res) {
@@ -96,13 +106,33 @@ app.post('/api/collection', function (req, res) {
 			res.json({code: 201, msg: 'create collection success'});
 	});
 });
-app.get('/api/collection/:id', function (req, res) {
+app.get('/api/collection/:openid', function (req, res) {
 	var Collection = models.Collection;
-	Collection.find({openid: req.params.id}, function (err, collections) {
+	Collection.find({openid: req.params.openid}, function (err, collections) {
 		if (err)
 			res.json({code: 500, msg: err});
 		else
 			res.json({code: 200, data: collections});
+	});
+});
+// app.get('/api/collection_num/:article_id', function (req, res) {
+// 	var Collection = models.Collection;
+// 	Collection.count({_id: req.params.article_id}, function (err, num) {
+// 		if (err)
+// 			res.json({code: 500, msg: err});
+// 		else
+// 			res.json({code: 200, data: num});
+// 	});
+// });
+app.get('/api/weather/:lat/:lon', function (req, res) {
+	var lat = req.params.lat;
+	var lon = req.params.lon;
+	var url = 'http://api.map.baidu.com/telematics/v3/weather?location='+lon+','+lat+'&output=json&ak='+config.baidu.ak;
+	request(url, function (err, response, body) {
+		if (err)
+			res.json({code: 500, msg: err});
+		else
+			res.json({code: 200, data: JSON.parse(body).results[0]});
 	});
 });
 
@@ -111,7 +141,10 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 });
 
 var io = require('socket.io').listen(server);
+// var num = 0;
 io.sockets.on('connection', function (socket) {
+	var num = Object.keys(io.connected).length;
+	io.sockets.emit('num_to_client', num);
 	socket.on('message_to_server', function (data) {
 		io.sockets.emit('message_to_client', data);
 	});

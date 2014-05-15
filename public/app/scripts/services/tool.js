@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('zhihuAngularApp')
-  .service('Tool', ['$window',function ($window) {
+  .service('Tool', ['$window', '$timeout',function ($window, $timeout) {
   	var $ = $window.Zepto, Swipe = $window.Swipe || {};
     var slider = function () {
 		var mySwipe = new Swipe(document.getElementById('slider'), {
@@ -25,7 +25,17 @@ angular.module('zhihuAngularApp')
 		}
 		$('.bullet').first().addClass('active');
     };
+    var alert = function (content) {
+    	var alert = $('.alert'),
+    	alert_content = $('.alert-content');
+    	alert_content.html(content);
+    	alert.fadeIn();
+    	$timeout(function () {
+    		alert.fadeOut();
+    	},1500);
+    };
     return {
-    	slider: slider
+    	slider: slider,
+    	alert: alert
     };
   }]);

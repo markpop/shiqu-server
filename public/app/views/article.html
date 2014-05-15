@@ -83,6 +83,7 @@
 		</div>
 		<div class="article-share-btn">
 			<button ng-click="collect(data)">收藏</button>
+			<!-- <button ng-click="discollect(data)" ng-if="collected">取消收藏</button> -->
 			<button class="article-share-cancel" ng-click="cancel()">取消</button>
 		</div>
 	</div>
@@ -95,11 +96,11 @@
 		<div class="col-3">
 			<span class="icon-arrow-down10"></span>
 		</div>
-		<div class="col-3" ng-click="share()">
+		<div class="col-3" ng-click="share(data)">
 			<span class="icon-export"></span>
 		</div>
 		<div class="col-3 bl" ng-click="comment()">
-			<span class="icon-comments mr5"></span>1点评
+			<span class="icon-comments mr5"></span>{{num || 0}}点评
 		</div>
 	</div>
 </footer>

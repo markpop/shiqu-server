@@ -6,6 +6,7 @@ angular.module('zhihuAngularApp', [
   'ngSanitize',
   'ngTouch',
   'ngRoute',
+  'geolocation',
   'btford.socket-io'
 ])
   .config(function ($routeProvider) {

@@ -10,6 +10,9 @@ angular.module('zhihuAngularApp')
     Socket.on('message_to_client', function (data) {
     	$scope.data.push(data);
     });
+    Socket.on('num_to_client', function (data) {
+        $scope.num = data;
+    });
     $scope.send = function () {
     	Socket.emit('message_to_server', {
     		content: $scope.content,

@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+
 var Article = mongoose.model('Article', {
 	img: String,
 	title: String,
